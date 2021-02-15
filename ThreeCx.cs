@@ -16,7 +16,7 @@ using MessagePack;
 namespace ThreeCx
 {
 
-    public class ThreeCx
+    public class ThreeCx 
     {
         private string? _baseUrl;
         private readonly CookieContainer _cookies = new();
