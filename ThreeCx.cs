@@ -16,16 +16,16 @@ using MessagePack;
 namespace ThreeCx
 {
 
-    public class ThreeCx 
+    public class ThreeCx
     {
-        private string? _baseUrl;
+        private readonly string? _baseUrl;
         private readonly CookieContainer _cookies = new();
 
         private readonly HttpClient _httpClient = new();
         public ThreeCx(string baseUrl, string username, string password)
         {
             _baseUrl = baseUrl;
-            var url = LoginUrl();
+            var cleanedUrl = LoginUrl("login");
             var auth = new Auth()
             {
                 Name = "",
@@ -33,23 +33,21 @@ namespace ThreeCx
                 Password = password,
             };
             var cookie = new Cookie();
-            _cookies.Add(LoginUrl(), cookie);
+            _cookies.Add(cleanedUrl, cookie);
             var response = _httpClient
-                .PostAsJsonAsync(LoginUrl(), auth)
+                .PostAsJsonAsync(cleanedUrl, auth)
                 .Result;
             var authCookies =
-                _cookies.GetCookies(LoginUrl());
+                _cookies.GetCookies(cleanedUrl);
 
         }
 
-        private Uri LoginUrl()
+        private Uri LoginUrl(string endPoint)
         {
             var apiEndPoint = "login";
-            _baseUrl = StripHtml(_baseUrl?.Replace("/#", string.Empty).Replace("/login", string.Empty)
+            var strippedUrl = StripHtml(_baseUrl?.Replace("/#", string.Empty).Replace("/login", string.Empty)
                 .Replace("//api/", "/api/"));
-            _baseUrl = _baseUrl?.Replace("//api/", "/api/");
-            var url = new Uri(StripHtml(_baseUrl) + apiEndPoint);
-            return url;
+            return new Uri(StripHtml(strippedUrl) + apiEndPoint);
         }
 
         private static string StripHtml(string? input) =>

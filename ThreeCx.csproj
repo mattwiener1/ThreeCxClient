@@ -10,4 +10,12 @@
       <PackageReference Include="MessagePack" Version="2.2.85" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Old" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Old\ThreeCxOld.cs" />
+    </ItemGroup>
+
 </Project>

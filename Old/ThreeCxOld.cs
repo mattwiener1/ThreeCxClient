@@ -1610,20 +1610,17 @@ namespace ThinkVoipTool
 
         public string? Email { get; set; }
 
-        //public string? Password { get; set; }
+        public string? Password { get; set; }
         public string? MobileNumber { get; set; }
 
-        //public string? OutboundCallerId { get; set; }
+        public string? OutboundCallerId { get; set; }
         public int Phones { get; set; }
 
         public string? MacAddress { get; set; }
         // public string? Membership { get; set; }
         // public string? CurrentProfile { get; set; }
         // public int QueueStatus { get; set; }
-
-        //[JsonProperty("DND")]
         //public int Dnd { get; set; }
-
         //public Warning Warning { get; set; }
     }
 
