@@ -25,7 +25,7 @@ namespace ThreeCx
         public ThreeCx(string baseUrl, string username, string password)
         {
             _baseUrl = baseUrl;
-            var cleanedUrl = LoginUrl("login");
+            var cleanedUrl = CleanedUrl("login");
             var auth = new Auth()
             {
                 Name = "",
@@ -42,7 +42,7 @@ namespace ThreeCx
 
         }
 
-        private Uri LoginUrl(string endPoint)
+        private Uri CleanedUrl(string endPoint)
         {
             var apiEndPoint = "login";
             var strippedUrl = StripHtml(_baseUrl?.Replace("/#", string.Empty).Replace("/login", string.Empty)

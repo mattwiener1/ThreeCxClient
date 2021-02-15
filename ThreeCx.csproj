@@ -11,11 +11,19 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Old" />
+      <Compile Remove="Old\ThreeCxOld.cs" />
+      <Compile Remove="obj\**" />
+      <Compile Remove="Old\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Old\ThreeCxOld.cs" />
+      <EmbeddedResource Remove="obj\**" />
+      <EmbeddedResource Remove="Old\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="obj\**" />
+      <None Remove="Old\**" />
     </ItemGroup>
 
 </Project>
